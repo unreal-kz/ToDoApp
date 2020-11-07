@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,10 +10,16 @@
     {% block title %}
     {% endblock title %}
     </title>
-</head>
-<body>
-    {% block content %}
+
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
     
+    {% include 'tasks/scripts.html' %}
+
+</head>
+<body oncontextmenu='return false' class='snippet-body'>
+    <script src="//code.jquery.com/jquery-3.1.0.slim.min.js"></script>
+    {% block content %}
     {% endblock content %}
 </body>
 </html>

@@ -1,0 +1,87 @@
+
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Snippet - BBBootstrap</title>
+                                
+                                <script type='text/javascript'>$(document).ready(function () {
+
+$('#list-items').html(localStorage.getItem('listItems'));
+
+$('.add-items').click(function(event)
+{
+
+event.preventDefault();
+
+var item = $('#todo-list-item').val();
+
+if(item)
+{
+$('#list-items').append("<li><input class='checkbox' type='checkbox' /> <span class='todo-text'>" + item + "</span><a class='remove text-right'><i class='fa fa-trash'></i></a>
+    <hr>
+</li>");
+
+localStorage.setItem('listItems', $('#list-items').html());
+
+$('#todo-list-item').val("");
+}
+
+});
+
+$(document).on('change', '.checkbox', function()
+{
+if($(this).attr('checked'))
+{
+$(this).removeAttr('checked');
+
+
+
+
+}
+else
+{
+$(this).attr('checked', 'checked');
+
+
+
+
+}
+
+$(this).parent().toggleClass('completed');
+
+localStorage.setItem('listItems', $('#list-items').html());
+});
+
+$(document).on('click', '.remove', function()
+{
+$(this).parent().remove();
+
+localStorage.setItem('listItems', $('#list-items').html());
+});
+
+});</script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <script src="//code.jquery.com/jquery-3.1.0.slim.min.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="main-todo-input-wrap">
+            <div class="main-todo-input fl-wrap">
+                <div class="main-todo-input-item"> <input type="text" id="todo-list-item" placeholder="What will you do today?"> </div> <button class="add-items main-search-button">ADD</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="main-todo-input-wrap">
+            <div class="main-todo-input fl-wrap todo-listing">
+                <ul id="list-items"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+                            </body>
+                        </html>
